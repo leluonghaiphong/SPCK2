@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm</title>
+    <style>
+        /* Thêm CSS để tạo giao diện sản phẩm */
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            position: relative;
+
+        }
+
+        .product:hover>.delete {
+            display: block;
+        }
+
+        .delete {
+            width: 40px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: none
+        }
+    </style>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <h1><a href="/index.htm">Trang Web Bán Hàng</a></h1>
+        <div class="topnav">
+
+
+    </header>
+    <div id="productList"></div>
+
+    <script>
+        const data = JSON.parse(localStorage.getItem("cart") ?? "[]")
+
+
+        // Lặp qua mảng sản phẩm và hiển thị chúng trên trang web
+        const productListDiv = document.getElementById("productList");
+
+        data.forEach(product => {
+            const productDiv = document.createElement("div");
+            productDiv.classList.add("product");
+
+            // Tạo nội dung của sản phẩm
+            const productContent = `
+                <img src="delete.png" alt="delete.png" class="delete">
+                <img src="${product.image}" alt="${product.name}">
+                <h2>${product.name}</h2>
+                <p>Giá: ${product.price}</p>
+            `;
+
+            productDiv.innerHTML = productContent;
+            productListDiv.appendChild(productDiv);
+        });
+
+        const deleteButtons = document.getElementsByClassName('delete');
+
+        for (let i = 0; i < deleteButtons.length; i++) {
+            deleteButtons[i].addEventListener('click', (event) => {
+                const clickedButton = event.target;
+                let cart = localStorage.getItem('cart');
+                let carts = JSON.parse(cart);
+                carts.splice(i, 1); 
+                localStorage.setItem('cart', JSON.stringify(carts));
+                window.location.reload();
+
+            });
+        }
+
+    </script>
+</body>
+
+</html>

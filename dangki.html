@@ -1,0 +1,85 @@
+<!--
+Author: Colorlib
+Author URL: https://colorlib.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Creative Colorlib SignUp Form</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script
+		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- Custom Theme files -->
+	<link href="dangki.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="./dangki.js"></script>
+	<!-- //Custom Theme files -->
+	<!-- web font -->
+	<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+	<!-- //web font -->
+</head>
+
+<body>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>Register</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<input id="username" class="text" type="text" name="Username" placeholder="Username" required="">
+				<input id="email" class="text email" type="email" name="email" placeholder="Email" required="">
+				<input id="password" class="text" type="password" name="password" placeholder="Password" required="">
+				<input id="cfpassword" class="text w3lpass" type="password" name="password"
+					placeholder="Confirm Password" required="">
+				<div class="wthree-text">
+					<label class="anim">
+						<input type="checkbox" class="checkbox" required="">
+						<span>I Agree To The Terms & Conditions</span>
+					</label>
+					<div class="clear"> </div>
+				</div>
+				<button id="btnSignUp">Sign Up</button>
+				<p>Don't have an Account? <a href="/dangnhap.html"> Login Now!</a></p>
+			</div>
+		</div>
+		<!-- copyright -->
+		<div class="colorlibcopy-agile">
+			
+		</div>
+		<!-- //copyright -->
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- //main -->
+</body>
+<script>
+	document.getElementById('btnSignUp').addEventListener('click', handleBtn);
+	function handleBtn(event) {
+		const username = document.getElementById('username').value;
+		const email = document.getElementById('email').value;
+		const password = document.getElementById('password').value;
+		const user = {
+			username: username,
+			password: password,
+			email: email
+		}
+		const data = localStorage.getItem('users')
+		let users = JSON.parse(data);
+		users.push(user);
+		localStorage.setItem('users', JSON.stringify(users))
+	}
+</script>
+
+</html>
